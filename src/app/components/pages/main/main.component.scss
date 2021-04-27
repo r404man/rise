@@ -1,8 +1,20 @@
+.content {
+    position: relative;
+}
+
+app-header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
 .main-background {
     // position: absolute;
     left: 0;
     top: 0;
     z-index: 0;
+    position: relative;
 
     img {
         display: flex;

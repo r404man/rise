@@ -1,0 +1,33 @@
+.contacts {
+    display: flex;
+    justify-content: space-between;
+    padding: 90px 0px 150px 0px;
+    .contacts-text {
+        width: 35%;
+        padding-right: 250px;
+    }
+
+    .contacts-title {
+        margin-bottom: 30px;
+    }
+    .contacts-info {
+        margin-bottom: 30px;
+
+        li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            font-size: 22px;
+            font-weight: 400;
+        }
+        .info__number {
+            font-family: "Roboto", sans-serif;
+            font-weight: normal;
+        }
+        .time {
+            letter-spacing: 0.095em;
+        }
+        .high {
+            font-weight: 700;
+        }
+    }
+}
