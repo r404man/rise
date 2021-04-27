@@ -1,0 +1,19 @@
+.social-bar {
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    ul li.social__link {
+        list-style-type: none;
+    }
+
+    path {
+        transition: 0.3s ease-in-out;
+    }
+
+    a:hover path {
+        fill: #e5cb96;
+    }
+}

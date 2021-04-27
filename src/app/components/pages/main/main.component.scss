@@ -1,0 +1,38 @@
+.main-background {
+    // position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+
+    img {
+        display: flex;
+        max-width: 100%;
+    }
+}
+
+.main-title {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    p {
+        margin: 0;
+        padding: 0;
+        font-size: 36px;
+        color: #fff;
+        font-weight: 700;
+    }
+
+    p span {
+        font-weight: 400;
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 48px;
+        color: #e5cb96;
+    }
+}

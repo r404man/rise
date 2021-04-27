@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Raleway-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./assets/fonts/Raleway-Bold.woff');
+    font-weight: 700;
+}
+
+
+.container {
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    // background-color: #242424;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #BABABA;
+    opacity: 0.7;
+    border: 1px solid #fff;
+    border-radius: 6px;
+
+    &:hover {
+        background-color: #999999;
+    }
+}
+
