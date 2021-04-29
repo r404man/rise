@@ -3,8 +3,6 @@
 </div>
 <div class="cardlist">
     <!-- cards here -->
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+
+    <app-card *ngFor="let project of projects" [Item]="project"></app-card>
 </div>

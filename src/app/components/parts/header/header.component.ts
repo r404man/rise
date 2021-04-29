@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  bgClass;
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.router.events.subscribe(
+      event => {
+        if (event instanceof NavigationEnd) {
+          const eventUrl = /\d+|^\s+|\s+$/g.exec(event.urlAfterRedirects);;
+          const currentRoute = (eventUrl || []).join('');
+          this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/",'');
+        }
+      }
+    )
+  }
+
+
 
   ngOnInit(): void {
   }

@@ -14,6 +14,10 @@ import { CardComponent } from './components/parts/card/card.component';
 import { CardlistComponent } from './components/pages/cardlist/cardlist.component';
 
 import { gsap } from 'gsap';
+import { AppRoutingModule } from './app-routing.module';
+import { ProjectdetailComponent } from './components/pages/projectdetail/projectdetail.component';
+import { GalleryComponent } from './components/parts/gallery/gallery.component';
+import {DragScrollModule} from 'ngx-drag-scroll'
 
 @NgModule({
   declarations: [
@@ -27,10 +31,14 @@ import { gsap } from 'gsap';
     CallbackformComponent,
     FooterComponent,
     CardComponent,
-    CardlistComponent
+    CardlistComponent,
+    ProjectdetailComponent,
+    GalleryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    DragScrollModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

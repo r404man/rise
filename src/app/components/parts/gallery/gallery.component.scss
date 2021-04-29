@@ -1,0 +1,11 @@
+.gallery {
+  .gallery-item {
+      margin: 0px 15px 0px 15px;
+      display: flex;
+  }
+  .drag-scroll-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+}

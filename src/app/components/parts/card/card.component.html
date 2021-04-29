@@ -1,4 +1,4 @@
-<a href="#" class="card-link"> 
+<a routerLink="project/{{Item.id}}" class="card-link"> 
     <div class="card">
         <div class="card-img">
             <img src="../../../../assets/card.png" alt="Card image">
@@ -6,10 +6,10 @@
         </div>
         <div class="card-text">
             <div class="card-title">
-                Роль взгляда
+                {{Item.name}}
             </div>
             <div class="card-subtitle">
-                сен. 18 2019
+                {{Item.date}}
             </div>
         </div>
     </div>
