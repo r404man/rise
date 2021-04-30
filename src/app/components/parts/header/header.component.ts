@@ -15,7 +15,9 @@ export class HeaderComponent implements OnInit {
         if (event instanceof NavigationEnd) {
           const eventUrl = /\d+|^\s+|\s+$/g.exec(event.urlAfterRedirects);;
           const currentRoute = (eventUrl || []).join('');
-          this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/",'');
+          if (eventUrl !== null) {
+            this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/", '');
+          }
         }
       }
     )

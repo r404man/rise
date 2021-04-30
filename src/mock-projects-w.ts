@@ -1,4 +1,6 @@
-export const ProjectW = [
+import { ProjectW as ProjectInterface } from './app/interfaces/projectW';
+
+export const ProjectW: ProjectInterface[] = [
     {
         id: 1,
         name: "Ясная поляна",

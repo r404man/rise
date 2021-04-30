@@ -4,7 +4,7 @@ import { Location } from '@angular/common'
 
 
 import { Project } from 'src/app/interfaces/project';
-import { ProjectserviceService } from 'src/app/services/projectservice.service';
+import { ProjectService } from 'src/app/services/projects';
 
 @Component({
   selector: 'app-projectdetail',
@@ -15,7 +15,7 @@ export class ProjectdetailComponent implements OnInit {
   project;
   imgSrc;
 
-  constructor(private projectService: ProjectserviceService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private projectService: ProjectService, private route: ActivatedRoute, private location: Location) { }
 
   getProject() {
     const id = Number(this.route.snapshot.paramMap.get('id'));

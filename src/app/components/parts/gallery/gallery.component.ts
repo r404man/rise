@@ -8,12 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class GalleryComponent implements OnInit {
   @Input() imgArr = [];
 
+  slideConfig = { "slidesToShow": 1 }
+  
   constructor() { }
 
-  
-
   ngOnInit(): void {
-    console.log(this.imgArr)
+
   }
 
 }

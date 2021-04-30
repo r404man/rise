@@ -1,7 +1,15 @@
-<div class="gallery">
-    <drag-scroll>
-        <div drag-scroll-item *ngFor="let image of imgArr" class="gallery-item">
-            <img src="{{image.url}}}" alt="Gallery image" class="gallery-image">
-        </div>
-    </drag-scroll>
+<ngx-slick-carousel class="carousel" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+><div ngxSlickItem *ngFor="let slide of imgArr" class="slide">
+<img src="{{ slide.url }}" alt="" width="100%">
 </div>
+</ngx-slick-carousel>
+<!-- 
+<button (click)="addSlide()">Add</button>
+<button (click)="removeSlide()">Remove</button>
+<button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
+<button (click)="slickModal.unslick()">unslick</button> -->
+<ng-template #load>
+    <p>Load...</p>
+</ng-template>

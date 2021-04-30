@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
-import { ProjectserviceService } from '../../../services/projectservice.service';
+import { ProjectService } from '../../../services/projects';
 
 @Component({
   selector: 'app-cardlist',
@@ -10,7 +10,7 @@ import { ProjectserviceService } from '../../../services/projectservice.service'
 export class CardlistComponent implements OnInit {
   projects: Project[];
 
-  constructor(public projectService: ProjectserviceService) { }
+  constructor(public projectService: ProjectService) { }
 
   getProjectService() {
     this.projectService.getProjects().subscribe(val => this.projects = val);

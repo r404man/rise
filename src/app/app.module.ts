@@ -13,11 +13,10 @@ import { FooterComponent } from './components/parts/footer/footer.component';
 import { CardComponent } from './components/parts/card/card.component';
 import { CardlistComponent } from './components/pages/cardlist/cardlist.component';
 
-import { gsap } from 'gsap';
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectdetailComponent } from './components/pages/projectdetail/projectdetail.component';
 import { GalleryComponent } from './components/parts/gallery/gallery.component';
-import {DragScrollModule} from 'ngx-drag-scroll'
+import { SlickCarouselModule } from 'ngx-slick-carousel'
 
 @NgModule({
   declarations: [
@@ -37,14 +36,14 @@ import {DragScrollModule} from 'ngx-drag-scroll'
   ],
   imports: [
     BrowserModule,
-    DragScrollModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SlickCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   ngOnInit() {
-    
+
   }
- }
+}
