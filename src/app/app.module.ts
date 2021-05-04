@@ -16,7 +16,12 @@ import { CardlistComponent } from './components/pages/cardlist/cardlist.componen
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectdetailComponent } from './components/pages/projectdetail/projectdetail.component';
 import { GalleryComponent } from './components/parts/gallery/gallery.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel'
+import { AdminComponent } from './components/pages/admin/admin.component'
+
+import { NgImageSliderModule } from 'ng-image-slider';
+import { NavComponent } from './components/parts/_admin/nav/nav.component';
+import { BoardComponent } from './components/parts/_admin/board/board.component';
+import { AddprojectComponent } from './components/parts/_admin/board/_boards/addproject/addproject.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +37,16 @@ import { SlickCarouselModule } from 'ngx-slick-carousel'
     CardComponent,
     CardlistComponent,
     ProjectdetailComponent,
-    GalleryComponent
+    GalleryComponent,
+    AdminComponent,
+    NavComponent,
+    BoardComponent,
+    AddprojectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlickCarouselModule
+    NgImageSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
