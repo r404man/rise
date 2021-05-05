@@ -22,6 +22,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { NavComponent } from './components/parts/_admin/nav/nav.component';
 import { BoardComponent } from './components/parts/_admin/board/board.component';
 import { AddprojectComponent } from './components/parts/_admin/board/_boards/addproject/addproject.component';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { AddprojectComponent } from './components/parts/_admin/board/_boards/add
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgImageSliderModule
+    NgImageSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

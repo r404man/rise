@@ -13,17 +13,19 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe(
       event => {
         if (event instanceof NavigationEnd) {
+
           const eventUrl = /\d+|^\s+|\s+$/g.exec(event.urlAfterRedirects);;
           const currentRoute = (eventUrl || []).join('');
           if (eventUrl !== null) {
             this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/", '');
           }
+          if (event.url === '/admin') {
+            this.bgClass = 'project';
+          }
         }
       }
     )
   }
-
-
 
   ngOnInit(): void {
   }

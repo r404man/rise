@@ -2,32 +2,35 @@
     position: relative;
 }
 
-app-header {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+.main-text {
+    // background: url('../../../../assets/main-background.png');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 9;
+    position: relative;
+    padding: 260px 0px 300px 0px;
+    // height: 65.5vh;
 }
 
-.main-background {
-    // position: absolute;
-    left: 0;
+.main-image {
+    position: absolute;
     top: 0;
-    z-index: 0;
-    position: relative;
+    left: 0;
+    z-index: 1;    
 
     img {
-        display: flex;
-        max-width: 100%;
+        width: 100%;
     }
 }
 
+
 .main-title {
-    position: absolute;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
     p {
         margin: 0;
