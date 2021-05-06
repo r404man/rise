@@ -16,13 +16,15 @@ import { CardlistComponent } from './components/pages/cardlist/cardlist.componen
 import { AppRoutingModule } from './app-routing.module';
 import { ProjectdetailComponent } from './components/pages/projectdetail/projectdetail.component';
 import { GalleryComponent } from './components/parts/gallery/gallery.component';
-import { AdminComponent } from './components/pages/admin/admin.component'
+// import { AdminComponent } from './components/pages/admin/admin.component'
 
 import { NgImageSliderModule } from 'ng-image-slider';
-import { NavComponent } from './components/parts/_admin/nav/nav.component';
-import { BoardComponent } from './components/parts/_admin/board/board.component';
-import { AddprojectComponent } from './components/parts/_admin/board/_boards/addproject/addproject.component';
+// import { NavComponent } from './components/parts/_admin/nav/nav.component';
+// import { BoardComponent } from './components/parts/_admin/board/board.component';
+// import { AddprojectComponent } from './components/parts/_admin/board/_boards/addproject/addproject.component';
 import { environment } from 'src/environments/environment';
+// import { AuthComponent } from './components/pages/auth/auth.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -40,15 +42,17 @@ import { environment } from 'src/environments/environment';
     CardlistComponent,
     ProjectdetailComponent,
     GalleryComponent,
-    AdminComponent,
-    NavComponent,
-    BoardComponent,
-    AddprojectComponent
+    // AdminComponent,
+    // NavComponent,
+    // BoardComponent,
+    // AddprojectComponent,
+    // AuthComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    FormsModule,
     NgImageSliderModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
