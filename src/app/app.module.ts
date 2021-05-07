@@ -26,6 +26,8 @@ import { environment } from 'src/environments/environment';
 // import { AuthComponent } from './components/pages/auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/pages/messages/messages.component';
+import { AdminMainComponent } from './components/pages/admin-main/admin-main.component';
+import { ProjectListComponent } from './components/pages/project-list/project-list.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { MessagesComponent } from './components/pages/messages/messages.componen
     ProjectdetailComponent,
     GalleryComponent,
     MessagesComponent,
+    AdminMainComponent,
+    ProjectListComponent,
     // AdminComponent,
     // NavComponent,
     // BoardComponent,

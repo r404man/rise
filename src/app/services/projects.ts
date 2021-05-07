@@ -13,7 +13,7 @@ import { ProjectW as ProjectInterface } from '../interfaces/projectW';
 
 export class ProjectService {
   project: ProjectInterface;
-  isAuth: boolean = true;
+  isAuth: boolean = false; 
 
   constructor() { }
 

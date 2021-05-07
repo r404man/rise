@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
       // alert('access denied');
       this.router.navigateByUrl('/admin/auth');      
     }
+    console.log('/admin')
   }
 
 }

@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
     if (form.valid) {
       this.projectService.auth(username, password);
       if (this.projectService.isAuth) {
-        this.router.navigateByUrl('/admin/main');
+        this.router.navigateByUrl('/admin/main-page');
       } else {
         this.errMsg = 'Неверный логин или пароль';
       }
