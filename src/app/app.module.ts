@@ -25,6 +25,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { environment } from 'src/environments/environment';
 // import { AuthComponent } from './components/pages/auth/auth.component';
 import { FormsModule } from '@angular/forms';
+import { MessagesComponent } from './components/pages/messages/messages.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     CardlistComponent,
     ProjectdetailComponent,
     GalleryComponent,
+    MessagesComponent,
     // AdminComponent,
     // NavComponent,
     // BoardComponent,

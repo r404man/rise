@@ -18,8 +18,8 @@ export class NavBarComponent implements OnInit {
           if (eventUrl !== null) {
             this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/", '');
           }
-          if(event.url === '/admin') {
-            this.bgClass = 'project'
+          if(event.urlAfterRedirects === '/admin/auth') {
+            this.bgClass = 'project';
           }
         }
       }

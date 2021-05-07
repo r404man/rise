@@ -10,7 +10,14 @@ import { AddprojectComponent } from '../../parts/_admin/board/_boards/addproject
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
-  { path: 'main', component: AdminComponent },
+  {
+    path: 'main', component: AdminComponent, children: [
+      { path: 'projects', component: AddprojectComponent },
+      { path: 'fff', component: BoardComponent },
+    ]
+  },
+  // { path: 'project-list', component: AdminComponent },
+  // { path: 'messages', component: AdminComponent },
   { path: '**', redirectTo: 'auth' }
 ])
 

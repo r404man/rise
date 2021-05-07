@@ -13,6 +13,8 @@ import { ProjectW as ProjectInterface } from '../interfaces/projectW';
 
 export class ProjectService {
   project: ProjectInterface;
+  isAuth: boolean = true;
+
   constructor() { }
 
   getProjects(): Observable<Project[]> {
@@ -24,5 +26,11 @@ export class ProjectService {
       if (val.id === id) this.project = val
     })
     return this.project;
+  }
+
+  auth(username: string, password: string): void {
+    if (username === 'root' && password === 'root') {
+      this.isAuth = true;
+    }
   }
 }

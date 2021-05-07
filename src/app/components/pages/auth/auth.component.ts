@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProjectService } from 'src/app/services/projects';
 
 @Component({
   selector: 'app-auth',
@@ -12,19 +13,19 @@ export class AuthComponent implements OnInit {
   public password: string;
   public errMsg: string;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private projectService: ProjectService) { }
 
   auth(form: NgForm) {
     let { username, password } = form.value;
     if (form.valid) {
-      if (username === 'root' && password === 'root') {
-        this.router.navigateByUrl('admin/main');
+      this.projectService.auth(username, password);
+      if (this.projectService.isAuth) {
+        this.router.navigateByUrl('/admin/main');
       } else {
-        this.errMsg = 'Invalid data';
+        this.errMsg = 'Неверный логин или пароль';
       }
-      
     } else {
-      this.errMsg = 'Error';
+      this.errMsg = 'Введите корректные данные';
     }
   }
 
