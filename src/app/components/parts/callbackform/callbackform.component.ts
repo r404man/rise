@@ -1,7 +1,8 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms'
-import { ProjectService } from 'src/app/services/projects';
+
+import { Message } from '../../../interfaces/message';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-callbackform',
@@ -11,12 +12,20 @@ import { ProjectService } from 'src/app/services/projects';
 
 export class CallbackformComponent implements OnInit {
   msgText: Message;
+  errAllert: string = null;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private messageService: MessageService) { }
 
   sendData(form: NgForm) {
     this.msgText = form.value;
-    this.projectService.putMsg(this.msgText).then(x => console.log(x));
+    this.messageService.addMsg(this.msgText)
+      .then(val => {
+        if (val) {
+          this.errAllert = "Ваше сообщение доставлено!";
+          form.reset();
+        }
+      })
+      .catch(err => console.error(err));
   }
 
   ngOnInit(): void {

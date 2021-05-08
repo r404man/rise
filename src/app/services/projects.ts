@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, observable, of } from 'rxjs'
-import { AngularFirestore } from '@angular/fire/firestore';
 
 import { projects } from '../../mock-project';
 import { Project } from '../interfaces/project';
 
 import { ProjectW as ProjectData } from '../../mock-projects-w';
 import { ProjectW as ProjectInterface } from '../interfaces/projectW';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +13,9 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 export class ProjectService {
   project: ProjectInterface;
-  isAuth: boolean = false;
+  isAuth: boolean = true;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor() { }
 
   getProjects(): Observable<Project[]> {
     return of(projects);
@@ -36,8 +34,4 @@ export class ProjectService {
     }
   }
 
-  putMsg(x: Message) {
-    console.log(x)
-    return this.firestore.collection('messages').add(x);
-  }
 }

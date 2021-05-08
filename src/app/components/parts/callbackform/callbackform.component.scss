@@ -8,7 +8,7 @@ $accent: #e5cb96;
         margin-bottom: 20px;
     }
     .callback-allert {
-        color: #46C97A;
+        color: #46c97a;
         font-size: 22px;
         margin-bottom: 10px;
     }
@@ -41,6 +41,10 @@ $accent: #e5cb96;
                     color: #2e2e2e;
                 }
             }
+            .phone {
+                font-family: "Roboto", sans-serif;
+                font-weight: 400;
+            }
             .form__textarea {
                 border-radius: 20px;
                 border: 1px solid #c4c4c4;
@@ -56,7 +60,6 @@ $accent: #e5cb96;
                     border-color: $accent;
                     color: #2e2e2e;
                 }
-
             }
             .theme {
                 width: 100%;
