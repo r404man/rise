@@ -6,20 +6,20 @@
         <!-- Place for allert -->
         Ваше сообщение отправлено!:d
     </div>
-    <form class="callback-form">
+    <form class="callback-form" #form="ngForm" (ngSubmit)="sendData(form)">
         <div class="form__group">
-            <input type="text" class="form__input" placeholder="Имя">
-            <input type="text" class="form__input" placeholder="Почта">
+            <input type="text"  name="username" class="form__input" placeholder="Имя" ngModel required>
+            <input type="text" name="mail" class="form__input" placeholder="Почта" ngModel required>
         </div>
         <div class="form__group">
-            <input type="text" class="form__input" placeholder="Дата">
-            <input type="text" class="form__input" placeholder="Телефон">
+            <input type="text" name="date" class="form__input" placeholder="Дата" ngModel required>
+            <input type="text" name="phone" class="form__input" placeholder="Телефон" ngModel required>
         </div>
         <div class="form__group">
-            <input type="text" class="form__input theme" placeholder="Тема">
+            <input type="text" name="theme" class="form__input theme" placeholder="Тема" ngModel required>
         </div>
         <div class="form__group">
-            <textarea name="" class="form__textarea" id="" cols="30" rows="3" placeholder="Описание"></textarea>
+            <textarea name="description" class="form__textarea" id="" cols="30" rows="3" placeholder="Описание" ngModel required></textarea>
         </div>
         <div class="form__group">
             <button class="form__btn btn" type="submit">

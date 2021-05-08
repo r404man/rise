@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/parts/nav-bar/nav-bar.component';
@@ -22,7 +25,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
 // import { NavComponent } from './components/parts/_admin/nav/nav.component';
 // import { BoardComponent } from './components/parts/_admin/board/board.component';
 // import { AddprojectComponent } from './components/parts/_admin/board/_boards/addproject/addproject.component';
-import { environment } from 'src/environments/environment';
 // import { AuthComponent } from './components/pages/auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/pages/messages/messages.component';
@@ -58,6 +60,8 @@ import { ProjectListComponent } from './components/pages/project-list/project-li
     BrowserModule,
     FormsModule,
     NgImageSliderModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
     AppRoutingModule,
   ],
   providers: [],
