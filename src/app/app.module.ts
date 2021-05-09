@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './components/pages/messages/messages.component';
 import { AdminMainComponent } from './components/pages/admin-main/admin-main.component';
 import { ProjectListComponent } from './components/pages/project-list/project-list.component';
+import { MessageDetailComponent } from './components/pages/message-detail/message-detail.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ProjectListComponent } from './components/pages/project-list/project-li
     MessagesComponent,
     AdminMainComponent,
     ProjectListComponent,
+    MessageDetailComponent,
     // AdminComponent,
     // NavComponent,
     // BoardComponent,

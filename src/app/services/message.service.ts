@@ -13,14 +13,12 @@ export class MessageService {
 
   addMsg(msg: Message) {
     let isValid: boolean = true;
-    // console.log(msg);
     for (var prop in msg) {
       if (msg[prop].length === 0) {
         isValid = false;
         break;
       }
     }
-
     if (isValid) {
       return this.firestore.collection('messages').add(msg);
     }
@@ -30,7 +28,11 @@ export class MessageService {
     return this.firestore.collection('messages').snapshotChanges();
   }
 
-  getMsgDetail(id) {
+  getMsgDetail(id:string) {
+    return this.firestore.collection('messages').doc(id).valueChanges()
+  }
 
+  deleteMessage(id:string) {
+    return this.firestore.doc('policies/' + id).delete();
   }
 }

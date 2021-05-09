@@ -10,12 +10,14 @@ import { AddprojectComponent } from '../../parts/_admin/board/_boards/addproject
 import { AdminMainComponent } from '../admin-main/admin-main.component';
 import { MessagesComponent } from '../messages/messages.component';
 import { ProjectListComponent } from '../project-list/project-list.component';
+import { MessageDetailComponent } from '../message-detail/message-detail.component';
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
   {
     path: 'main-page', component: AdminComponent, children: [
       { path: 'messages', component: MessagesComponent },
+      { path: 'messages/:messageId', component: MessageDetailComponent },
       { path: 'project-list', component: ProjectListComponent }
     ]
   },

@@ -1,15 +1,29 @@
 <div class="board">
-    <div class="board-title">
+    <div class="board-title title">
         Заявки
     </div>
     <div class="message-table">
-        <table>
+        <table *ngIf='messages; else allert'>
             <tr>
                 <th>Имя</th>
+                <th class="f">Почта</th>
+                <th class="f">Дата</th>
+                <th>Тема</th>
+                <th></th>
             </tr>
-            <tr>
-                <td>Константин</td>
+            <tr *ngFor="let msg of messages">
+                <td>{{msg.username}}</td>
+                <td class="f">{{msg.mail}}</td>
+                <td class="f d">{{msg.date}}</td>
+                <td class="m">{{msg.theme}}</td>
+                <td><a class="message-link" [routerLink]="['/admin/main-page/messages', msg.id]">Открыть</a></td>
             </tr>
         </table>
     </div>
+    <div class="back">
+        <a class="admin-back" (click)="goBack()">Назад</a>
+    </div>
+    <ng-template #allert class="allert">
+        Сообщений не найдено
+    </ng-template>
 </div>

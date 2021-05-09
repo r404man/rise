@@ -17,7 +17,12 @@ export class CallbackformComponent implements OnInit {
   constructor(private messageService: MessageService) { }
 
   sendData(form: NgForm) {
-    this.msgText = form.value;
+    // Generate current data
+    let currentDate = date => date.toISOString().slice(0, 10);
+    currentDate = currentDate(new Date());
+
+    this.msgText = { date: currentDate, ...form.value }
+
     this.messageService.addMsg(this.msgText)
       .then(val => {
         if (val) {
