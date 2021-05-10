@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { ImageloaderService } from 'src/app/services/imageloader.service';
 
 @Component({
@@ -8,19 +9,30 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
   styleUrls: ['./addproject.component.scss']
 })
 export class AddprojectComponent implements OnInit {
-  fileList: Object | null;
-  imageList: boolean = false;
+  projectImageList: Object | null;
+  projectThumb;
+  project: Object;
+  projectLoader: number;
 
   constructor(public imageService: ImageloaderService) { }
 
-  upload(event) {
-    this.fileList = event.target.files;
+  uploadThumb(event) {
+    this.projectThumb = event.target.files[0];
   }
 
-  x(f: NgForm) {
-    console.log(this.fileList)
-    console.log(f.value);
+  upload(event) {
+    this.projectImageList = event.target.files;
   }
+
+  addProject(form: NgForm) {
+    this.project = { projectInfo: form.value, projectImages: this.projectImageList, projectThumb: this.projectThumb }
+    this.imageService.upload(this.project);
+
+    this.imageService.percent.subscribe(
+      val => this.projectLoader = val
+    )
+  }
+
   ngOnInit(): void {
   }
 
