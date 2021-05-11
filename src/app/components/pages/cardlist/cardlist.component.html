@@ -1,6 +1,6 @@
 <div class="cards-title title">
     Мои проекты
 </div>
-<div class="cardlist">
+<div class="cardlist" [ngClass]='{projectCounter: projectCounter}'>
     <app-card *ngFor="let project of projects" [Item]="project"></app-card>
 </div>

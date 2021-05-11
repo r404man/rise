@@ -2,11 +2,12 @@
     position: relative;
     border-radius: 6px;
 
-
     .card-img {
         display: flex;
+        height: 400px;
         img {
             border-radius: 6px;
+            width: 100%;
         }
     }
 

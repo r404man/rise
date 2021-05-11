@@ -1,7 +1,9 @@
 export interface Project {
-    id: number | null,
+    id?: number | null | string,
     title: string,
     date: string,
     description: string,
-    imgList: [];
+    imgList: [
+        {}
+    ] | null;
 }

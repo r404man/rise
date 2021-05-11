@@ -1,12 +1,12 @@
 <a routerLink="project/{{Item.id}}" class="card-link"> 
     <div class="card">
         <div class="card-img">
-            <img src="../../../../assets/card.png" alt="Card image">
+            <img src="{{Item.url}}" alt="Card image" >
             <div class="shadow"></div>
         </div>
         <div class="card-text">
             <div class="card-title">
-                {{Item.name}}
+                {{Item.title}}
             </div>
             <div class="card-subtitle">
                 {{Item.date}}

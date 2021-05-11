@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { ImageloaderService } from 'src/app/services/imageloader.service';
 
 @Component({
   selector: 'app-gallery',
@@ -6,31 +7,35 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnDestroy {
-  @Input() imgArr = [];
+  @Input() id: string;
+  imgArr = []
 
-  concept = [];
 
-  constructor() { }
-  ngOnInit(): void {
-    this.imgArr.forEach(img => {
-      console.log(img.url)
-      img = new Image(img.url, img.url);
-      this.concept.push(img);
-    });
-    
-    console.log(this.concept[0])
+
+  constructor(private projectService: ImageloaderService) { }
+  getImages() {
+    console.log(this.id);
+    this.projectService.getImages(this.id).subscribe(
+      data => {
+        data.items.map(
+          val => {
+            val.getDownloadURL().then(
+              imagePath => {
+                console.log(imagePath);
+                this.imgArr.push({ image: imagePath, thumbImage: imagePath })
+              }
+            )
+          }
+        )
+      }
+    );
   }
-  
+
+  ngOnInit(): void {
+    this.getImages();
+  }
+
   ngOnDestroy(): void {
     this.imgArr = [];
   }
-}
-
-class Image {
-  constructor(image: string, thumbImage: string) {
-    this.image = image;
-    this.thumbImage = thumbImage
-  }
-  image: string
-  thumbImage: string
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
 import { Project } from 'src/app/interfaces/project';
-import { ProjectService } from '../../../services/projects';
+// import { ProjectService } from '../../../services/projects';
+import { ImageloaderService } from '../../../services/imageloader.service';
 
 @Component({
   selector: 'app-cardlist',
@@ -9,15 +11,30 @@ import { ProjectService } from '../../../services/projects';
 })
 export class CardlistComponent implements OnInit {
   projects: Project[];
+  projectCounter:boolean = false;
 
-  constructor(public projectService: ProjectService) { }
+  constructor(public projectService: ImageloaderService) { }
 
-  getProjectService() {
-    this.projectService.getProjects().subscribe(val => this.projects = val);
+
+  getProjects() {
+    this.projectService.getProjects().subscribe(
+      data => {
+        this.projects = data.map(val => {
+          return {
+            id: val.payload.doc.id,
+            ...val.payload.doc.data() as Object
+          } as Project;
+        })
+
+        if(this.projects.length >= 2) {
+          this.projectCounter = true;
+        } 
+      },
+    );
   }
 
   ngOnInit(): void {
-    this.getProjectService();
+    this.getProjects();
   }
 
 }

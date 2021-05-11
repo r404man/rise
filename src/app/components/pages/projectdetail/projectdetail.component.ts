@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Location } from '@angular/common'
+import { Observable } from 'rxjs'
 
-
-import { Project } from 'src/app/interfaces/project';
-import { ProjectService } from 'src/app/services/projects';
+import { ImageloaderService } from 'src/app/services/imageloader.service';
+import { Project } from '../../../interfaces/project';
 
 @Component({
   selector: 'app-projectdetail',
@@ -12,24 +12,30 @@ import { ProjectService } from 'src/app/services/projects';
   styleUrls: ['./projectdetail.component.scss']
 })
 export class ProjectdetailComponent implements OnInit {
-  project;
-  imgSrc;
+  project: Project | any = null;
+  imgSrc = [];
+  id: string;
 
-  constructor(private projectService: ProjectService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private projectService: ImageloaderService, private route: ActivatedRoute, private location: Location) { }
 
   getProject() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.project = this.projectService.getProject(id);
-    this.imgSrc = this.project.img;
+    this.projectService.getProjectDetail(this.id).subscribe(
+      (data) => {
+        this.project = { ...data.data() as Project }
+      }
+    )
   }
+  
+  
   
   goBack() {
     this.location.back();
   }
   
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getProject();
   }
-  
+
 
 }
