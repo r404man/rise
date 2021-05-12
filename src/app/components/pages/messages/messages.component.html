@@ -3,7 +3,7 @@
         Заявки
     </div>
     <div class="message-table">
-        <table *ngIf='messages; else allert'>
+        <table *ngIf='messages != null; else load'>
             <tr>
                 <th>Имя</th>
                 <th class="f">Почта</th>
@@ -16,14 +16,21 @@
                 <td class="f">{{msg.mail}}</td>
                 <td class="f d">{{msg.date}}</td>
                 <td class="m">{{msg.theme}}</td>
+                <td><a class="message-link" (click)='deleteMessage(msg.id)'>Удалить</a></td>
                 <td><a class="message-link" [routerLink]="['/admin/main-page/messages', msg.id]">Открыть</a></td>
             </tr>
         </table>
     </div>
     <div class="back">
-        <a class="admin-back" (click)="goBack()">Назад</a>
+        <app-goback></app-goback>
     </div>
-    <ng-template #allert class="allert">
+    <ng-template #load>
+        <div class="loader">
+            <app-loader></app-loader>
+        </div>
+    </ng-template>
+
+    <ng-template *ngIf='messages === null' class="allert">
         Сообщений не найдено
     </ng-template>
 </div>

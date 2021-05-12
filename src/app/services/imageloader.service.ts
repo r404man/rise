@@ -34,6 +34,7 @@ export class ImageloaderService {
     // Uppload thumb
     this.ref = this.fireStorage.ref(thumbPath);
     this.task = this.ref.put(project.projectThumb);
+
     // Uppload album
     for (let i = 0; i < album.length; i++) {
       this.ref = this.fireStorage.ref(albumPath + i.toString());
@@ -59,7 +60,52 @@ export class ImageloaderService {
   }
 
   getImages(id: string) {
-    console.log(id)
     return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/`).listAll();
+  }
+
+  deleteProject(id: string) {
+    this.getImages(id).subscribe(
+      data => {
+        data.items.map(
+          val => {
+            val.delete();
+          }
+        )
+      }
+    );
+    this.fireStore.collection('projects').doc(id).delete();
+  }
+
+  deleteThumb(id: string) {
+    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/projectThumb`).delete();
+  }
+
+  setThumb(id: string, filePath) {
+    const thumbPath = `${id}/projectThumb`
+    this.ref = this.fireStorage.ref(thumbPath);
+    this.task = this.ref.put(filePath);
+    return this.task.percentageChanges();
+  }
+
+  deleteImage(id: string, imgName: string) {
+    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/${imgName}`).delete();
+  }
+
+  editData(id: string, data) {
+    console.log(data);
+    return this.fireStore.collection('projects').doc(id).set(data);
+  }
+
+  editImages(imgFiles, id) {
+    const album = Object.values(imgFiles);
+    console.log(album);
+    const albumPath = `${id}/`;
+
+    for (let i = 0; i < album.length; i++) {
+      this.ref = this.fireStorage.ref(albumPath + i.toString());
+      this.task = this.ref.put(album[i]);
+    }
+
+    return this.task.percentageChanges();
   }
 }

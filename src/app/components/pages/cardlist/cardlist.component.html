@@ -1,6 +1,11 @@
 <div class="cards-title title">
     Мои проекты
 </div>
-<div class="cardlist" [ngClass]='{projectCounter: projectCounter}'>
+
+<div *ngIf='projects != null; else load' class="cardlist"  [ngClass]='{projectCounter: projectCounter}'>
     <app-card *ngFor="let project of projects" [Item]="project"></app-card>
 </div>
+
+<ng-template #load class="load">
+    <app-loader></app-loader>
+</ng-template>

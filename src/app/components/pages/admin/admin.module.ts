@@ -11,6 +11,8 @@ import { AdminMainComponent } from '../admin-main/admin-main.component';
 import { MessagesComponent } from '../messages/messages.component';
 import { ProjectListComponent } from '../project-list/project-list.component';
 import { MessageDetailComponent } from '../message-detail/message-detail.component';
+import { ProjectdetailComponent } from '../projectdetail/projectdetail.component';
+import { ProjectEditComponent } from '../project-edit/project-edit.component';
 
 const routing = RouterModule.forChild([
   { path: 'auth', component: AuthComponent },
@@ -19,6 +21,7 @@ const routing = RouterModule.forChild([
       { path: 'messages', component: MessagesComponent },
       { path: 'messages/:messageId', component: MessageDetailComponent },
       { path: 'project-list', component: ProjectListComponent },
+      { path: 'project-list/:projectId', component: ProjectEditComponent },
       { path: 'project', component: AddprojectComponent },
     ]
   },

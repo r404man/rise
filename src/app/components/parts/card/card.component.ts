@@ -8,7 +8,7 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() Item;
+  @Input() Item = null;
   thumbUrl: Observable<string>;
 
   constructor(private projectService: ImageloaderService) { }

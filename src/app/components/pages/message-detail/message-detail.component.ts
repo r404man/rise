@@ -22,9 +22,6 @@ export class MessageDetailComponent implements OnInit {
     })
   }
 
-  clipToBoard() {
-  }
-
   goBack() {
     this.location.back();
   }

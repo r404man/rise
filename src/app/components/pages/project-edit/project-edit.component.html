@@ -1,0 +1,62 @@
+<div class="board">
+    <div class="board-title title">
+        Редактирование проекта
+    </div>
+    <div class="edit" *ngIf="project != null; else load">
+        <div class="edit-form">
+            <div class="allert-group" *ngIf='isSuccess != null'>
+                <div class="allert">
+                    Изменения успешно сохранены
+                </div>
+            </div>
+            <form #editForm="ngForm" (ngSubmit)="editData(editForm)">
+                <div class="form__group">
+                    <label class="form__label" for="">Название проекта</label>
+                    <input class="form__input" type="text" name="title" [(ngModel)]="project.title">
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for="">Дата создания проекта</label>
+                    <input class="form__input" type="date" name="date" [(ngModel)]="project.date">
+                </div>
+                <div class="form__group">
+                    <lable class="form__label">Описание</lable>
+                    <textarea name="description" id="" cols="30" rows="2" class="form__textarea"
+                        [(ngModel)]="project.description"></textarea>
+                </div>
+                <div class="form__group">
+                    <label for="" class="form__label">Обложка</label>
+                    <div class="project-thumb">
+                        <img src="{{projectThumb}}" alt="Обложка проекта">
+                    </div>
+                </div>
+                <div class="form__group">
+                    <label class="form__label" for=""></label>
+                    <input type="file" class="form__input project-file" aria-placeholder="select"
+                        (change)="editThumb($event)" placeholder="Выбрать файл">
+                </div>
+                <div class="form__group images">
+                    <label class="form__label" for="">Изображения</label>
+
+                    <div class="img-list">
+                        <a *ngFor='let img of imgArr' class="project-img" (click)='deleteImage(img)'>
+                            <img src="{{img.url}}" alt="Изображения проекта">
+                        </a>
+                    </div>
+                    <div class="form__group img-edit">
+                        <input type="file" class="form__input project-file" multiple (change)="editImages($event)">
+                    </div>
+                </div>
+                <div class="form__group">
+                    <app-goback></app-goback>
+                    <button class="form__btn btn" type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<ng-template #load>
+    <div class="loader">
+        <app-loader></app-loader>
+    </div>
+</ng-template>

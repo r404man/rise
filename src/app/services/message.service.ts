@@ -32,6 +32,6 @@ export class MessageService {
   }
 
   deleteMessage(id:string) {
-    return this.firestore.doc('policies/' + id).delete();
+    return this.firestore.collection('messages').doc(id).delete();
   }
 }

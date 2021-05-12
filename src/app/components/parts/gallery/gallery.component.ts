@@ -14,14 +14,12 @@ export class GalleryComponent implements OnDestroy {
 
   constructor(private projectService: ImageloaderService) { }
   getImages() {
-    console.log(this.id);
     this.projectService.getImages(this.id).subscribe(
       data => {
         data.items.map(
           val => {
             val.getDownloadURL().then(
               imagePath => {
-                console.log(imagePath);
                 this.imgArr.push({ image: imagePath, thumbImage: imagePath })
               }
             )
