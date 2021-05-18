@@ -8,6 +8,7 @@
         img {
             border-radius: 6px;
             width: 100%;
+            object-fit: cover;
         }
     }
 
@@ -46,6 +47,26 @@
             font-size: 22px;
             font-weight: 700;
             color: #fff;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card-img {
+        height: 290px !important; 
+    }
+    .card-text {
+        width: 100%;
+        left: 10px !important;
+        .card-title {
+            font-size: 22px !important;
+            width: 100%;
+        }
+        .card-subtitle {
+            font-size: 18px !important;
+        }
+        &::before {
+            display: none;
         }
     }
 }

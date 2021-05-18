@@ -72,3 +72,29 @@ $accent: #e5cb96;
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .callback {
+        padding: 15px 20px 10px 20px;
+    }
+    .form__group {
+        flex-direction: column;
+        // margin-bottom: 10px !important;
+        margin: 0 !important;
+        input {
+            margin-bottom: 10px !important;
+            &:first-child {
+                // margin-bottom: 0px !important;
+            }
+        }
+    }
+    textarea {
+        margin-bottom: 15px;
+    }
+    .form__input:first-child {
+        margin-right: 0px !important;
+    }
+    .callback-title {
+        margin-bottom: 10px !important;
+    }
+}

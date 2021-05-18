@@ -11,3 +11,14 @@
 .cardlist.projectCounter {
     grid-template-columns: auto auto;
 }
+
+@media screen and (max-width: 600px) {
+    .cardlist {
+        grid-gap: 10px 0px;
+        grid-template-columns: auto !important;
+    }
+    .cards-title {
+        padding: 0px 10px;
+        margin-bottom: 15px;
+    }
+}

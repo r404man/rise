@@ -30,8 +30,7 @@ footer.project {
             a {
                 text-decoration: none;
                 cursor: pointer;
-                color: #E5CB96;
-
+                color: #e5cb96;
 
                 &:hover {
                     text-decoration: line-through;
@@ -48,10 +47,29 @@ footer.project {
         align-items: center;
         font-size: 18px;
         font-weight: 400;
-        font-family: 'Roboto', sans-serif;
-        
+        font-family: "Roboto", sans-serif;
+
         svg {
             margin-left: 30px;
+        }
+    }
+}
+
+@media screen and(max-width:600px) {
+    .footer__inner {
+        flex-direction: column;
+    }
+
+    .footer-name {
+        margin-bottom: 15px;
+        padding: 0px 10px;
+        svg {
+            margin-right: 10px !important;
+        }
+    }
+    .footer-copy {
+        svg {
+            margin-left: 10px !important;
         }
     }
 }

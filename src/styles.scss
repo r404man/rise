@@ -186,6 +186,14 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
 
- 
+@media screen and (max-width: 600px) {
+    .title {
+        font-size: 26px;
+    }
+    .btn {
+        padding: 10px 15px;
+        font-size: 18px;
+    }
 }
