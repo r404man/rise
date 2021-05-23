@@ -6,7 +6,7 @@ import { Observable, observable, of } from 'rxjs'
 })
 
 export class ProjectService {
-  isAuth: boolean = false;
+  isAuth: boolean = true;
   
   constructor() { }
   

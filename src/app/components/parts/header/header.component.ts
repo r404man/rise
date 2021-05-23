@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
           if (eventUrl !== null) {
             this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/", '');
           }
-          if (event.urlAfterRedirects === '/admin/auth') {
-            this.bgClass = 'project';
+          if (event.urlAfterRedirects != '/') {
+            this.bgClass = 'dark';
           }
         }
       }

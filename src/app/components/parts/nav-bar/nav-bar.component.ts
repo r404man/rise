@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
   bgClass;
-
+  isMenu: boolean = false;
   constructor(private router: Router) {
     this.router.events.subscribe(
       event => {
@@ -18,14 +19,18 @@ export class NavBarComponent implements OnInit {
           if (eventUrl !== null) {
             this.bgClass = eventUrl.input.replace(/\d+|^\s+|\s+$/g, '').replace("/", '').replace("/", '');
           }
-          if(event.urlAfterRedirects === '/admin/auth') {
-            this.bgClass = 'project';
+          if (event.urlAfterRedirects != '/') {
+            this.bgClass = 'dark';
           }
         }
       }
     )
 
   }
+  menu() {
+    this.isMenu = !this.isMenu;
+  }
+
 
   ngOnInit(): void {
   }

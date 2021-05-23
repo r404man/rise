@@ -28,6 +28,7 @@ export class ProjectdetailComponent implements OnInit {
   
   
   
+  
   goBack() {
     this.location.back();
   }

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ImageloaderService } from 'src/app/services/imageloader.service';
+import { NgImageSliderComponent } from 'ng-image-slider'
 
 @Component({
   selector: 'app-gallery',
@@ -8,7 +9,9 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
 })
 export class GalleryComponent implements OnDestroy {
   @Input() id: string;
+  @ViewChild('gallery') slider:NgImageSliderComponent;
   imgArr = []
+  arrows:boolean = false;  
 
 
 
@@ -27,6 +30,17 @@ export class GalleryComponent implements OnDestroy {
         )
       }
     );
+  }
+
+  isClick() {
+    
+  }
+
+  nextImage() {
+    this.slider.prev()
+  }
+  prevImage() {
+    this.slider.next();
   }
 
   ngOnInit(): void {

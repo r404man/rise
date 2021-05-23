@@ -2,7 +2,7 @@
     Мои проекты
 </div>
 
-<div *ngIf='projects != null; else load' class="cardlist"  [ngClass]='{projectCounter: projectCounter}'>
+<div *ngIf='projects != null; else load' class="cardlist">
     <app-card *ngFor="let project of projects" [Item]="project"></app-card>
 </div>
 

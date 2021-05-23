@@ -1,14 +1,11 @@
+:host {
+    margin-top: auto;
+}
+
 footer {
     background-color: #2f2f2f;
 }
 
-footer.project {
-    background-color: #2f2f2f;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-}
 
 .footer__inner {
     display: flex;
@@ -58,18 +55,20 @@ footer.project {
 @media screen and(max-width:600px) {
     .footer__inner {
         flex-direction: column;
-    }
+        align-items: baseline;
+        padding: 7px 10px;
+    }    
 
     .footer-name {
-        margin-bottom: 15px;
-        padding: 0px 10px;
-        svg {
-            margin-right: 10px !important;
-        }
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px !important;
     }
     .footer-copy {
-        svg {
-            margin-left: 10px !important;
-        }
+        width: 100%;
+        font-size: 16px !important;
+        display: flex;
+        justify-content: space-between;
     }
 }

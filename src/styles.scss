@@ -45,7 +45,7 @@ body {
     font-size: 15px;
     font-family: "Raleway", sans-serif;
     font-weight: 400;
-    padding-top: 80px;
+    color: #2f2f2f;
 }
 
 ::-webkit-scrollbar-track {
@@ -188,12 +188,77 @@ body {
     text-align: center;
 }
 
+// Swiper - gallery
+.wrapper {
+    height: 750px;
+}
+.custom-image-main {
+    display: flex;
+    // height: 500px;
+    width: 75%;
+    img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+        // margin: 0 !important;
+    }
+}
+.img-div {
+    box-shadow: none !important;
+}
+// .prev,
+// .next {
+//     top: unset !important;
+//     bottom: 0 !important;
+//     background-color: transparent !important;
+//     font-size: 0 !important;
+// }
+
+// .next {
+//     &::after {
+//         content: "";
+//         background: url("./assets/gallery/ArrowNext.svg") 100%;
+//         background-repeat: no-repeat;
+//         width: 430px;
+//         height: 20px;
+//         position: absolute;
+//         top: 0;
+//         left: -27rem;
+//     }
+// }
+// .prev {
+//     &::after {
+//         content: "";
+//         background: url("./assets/gallery/ArrowPrev.svg") 100%;
+//         background-repeat: no-repeat;
+//         width: 430px;
+//         height: 20px;
+//         position: absolute;
+//         top: 0;
+//         left: 2rem;
+//     }
+// }
+
+.custom-image-main {
+    img {
+        max-height: 80% !important;
+        max-width: 98% !important;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .title {
-        font-size: 26px;
+        font-size: 21px;
     }
     .btn {
         padding: 10px 15px;
-        font-size: 18px;
+        font-size: 17px;
+    }
+    .form__input {
+        font-size: 18px !important;
+    }
+    .form__textarea {
+        font-size: 18px !important;
     }
 }

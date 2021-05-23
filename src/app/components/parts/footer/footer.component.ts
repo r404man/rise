@@ -7,7 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  bgClass:string;
+  bgClass:string = null;
 
   constructor(private router: Router) {
     this.router.events.subscribe(
@@ -20,6 +20,8 @@ export class FooterComponent implements OnInit {
           }
           if (event.urlAfterRedirects === '/admin/auth') {
             this.bgClass = 'project';
+          } else {
+            this.bgClass = null;
           }
         }
       }

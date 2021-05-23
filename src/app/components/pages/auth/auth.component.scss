@@ -10,14 +10,14 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: .5px solid #cecece;
+    border: 0.5px solid #cecece;
     border-radius: 6px;
     padding: 0px 30px 15px 30px;
 
     .msg {
         color: #ff6b6b;
         font-size: 17px;
-        }
+    }
 
     .form-group {
         display: flex;
@@ -48,5 +48,14 @@ form {
             outline: none;
             color: #2e2e2e;
         }
+    }
+}
+
+@media screen and(max-width:600px) {
+    .form__label {
+        font-size: 18px !important;
+    }
+    .auth-btn {
+        padding: 10px 40px;
     }
 }

@@ -1,11 +1,11 @@
 <div class="offer" *ngIf='project != null; else load'>
-    <div class="project">
+    <div class="project container">
         <h1 class="project-title title">{{project.title}}</h1>
         <p class="project-subtitle">{{project.date}}</p>
     </div>
     <app-gallery [id]="id"></app-gallery>
     <div>
-        <div class="project-description">
+        <div class="project-description container">
             {{project.description}}
         </div>
     </div>
