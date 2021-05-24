@@ -15,21 +15,21 @@ th {
     text-align: left !important;
 }
 
-tr>th {
+tr > th {
     font-size: 18px;
     font-weight: 400;
     color: #000;
     &.f {
-        color: #ABABAB;
-    }    
+        color: #ababab;
+    }
 }
 
-tr>td {
-    border-bottom: 1px solid #ABABAB !important;
+tr > td {
+    border-bottom: 1px solid #ababab !important;
     padding: 15px 20px 15px 0px !important;
     font-size: 17px;
     &.f {
-        color: #ABABAB;
+        color: #ababab;
     }
     &:last-child {
         text-align: right;
@@ -40,7 +40,7 @@ tr>td {
     }
 
     &.d {
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
     }
 }
 
@@ -74,5 +74,47 @@ tr>td {
         left: 0;
         bottom: 0;
         height: 1px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .board {
+        padding: 0;
+    }
+    .board-title {
+        padding: 10px 10px 0px 10px;
+    }
+    .message-table {
+        padding: 0px 10px;
+        overflow-x: auto;
+        margin-bottom: 30px;
+        table {
+            table-layout: fixed;
+            tr > td {
+                word-break: break-all;
+            }
+            tr > th {
+                &.name {
+                    width: 150px;
+                }
+                &.mail {
+                    width: 150px;
+                }
+                &.date {
+                    width: 110px;
+                }
+                &.theme {
+                    width: 420px;
+                }
+                &.controls {
+                    width: 90px;
+                }
+            }
+        }
+    }
+    .back {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0px 10px 20px 10px;
     }
 }

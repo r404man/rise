@@ -5,11 +5,12 @@
     <div class="message-table">
         <table *ngIf='messages != null; else load'>
             <tr>
-                <th>Имя</th>
-                <th class="f">Почта</th>
-                <th class="f">Дата</th>
-                <th>Тема</th>
-                <th></th>
+                <th class="name">Имя</th>
+                <th class="f mail">Почта</th>
+                <th class="f date">Дата</th>
+                <th class="theme">Тема</th>
+                <th class="controls"></th>
+                <th class="controls"></th>
             </tr>
             <tr *ngFor="let msg of messages">
                 <td>{{msg.username}}</td>

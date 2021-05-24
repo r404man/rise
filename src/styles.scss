@@ -190,7 +190,9 @@ body {
 
 // Swiper - gallery
 .wrapper {
-    height: 750px;
+    // height: 750px;
+    display: flex;
+    flex-direction: column;
 }
 .custom-image-main {
     display: flex;
@@ -207,42 +209,10 @@ body {
 .img-div {
     box-shadow: none !important;
 }
-// .prev,
-// .next {
-//     top: unset !important;
-//     bottom: 0 !important;
-//     background-color: transparent !important;
-//     font-size: 0 !important;
-// }
-
-// .next {
-//     &::after {
-//         content: "";
-//         background: url("./assets/gallery/ArrowNext.svg") 100%;
-//         background-repeat: no-repeat;
-//         width: 430px;
-//         height: 20px;
-//         position: absolute;
-//         top: 0;
-//         left: -27rem;
-//     }
-// }
-// .prev {
-//     &::after {
-//         content: "";
-//         background: url("./assets/gallery/ArrowPrev.svg") 100%;
-//         background-repeat: no-repeat;
-//         width: 430px;
-//         height: 20px;
-//         position: absolute;
-//         top: 0;
-//         left: 2rem;
-//     }
-// }
 
 .custom-image-main {
     img {
-        max-height: 80% !important;
+        max-height: 85% !important;
         max-width: 98% !important;
     }
 }
@@ -260,5 +230,21 @@ body {
     }
     .form__textarea {
         font-size: 18px !important;
+    }
+    .admin-back {
+        font-size: 19px;
+    }
+    .board {
+        margin: 0px 10px;
+        padding: 0px 10px;
+        
+    }
+    .ng-image-slider {
+        height: 300px !important;
+    }
+    .ng-image-slider-container {
+        .main {
+            height: 250px !important;
+        }
     }
 }

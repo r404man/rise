@@ -9,7 +9,7 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
 })
 export class CardComponent implements OnInit {
   @Input() Item = null;
-  thumbUrl: Observable<string>;
+  // thumbUrl: Observable<string>;
 
   constructor(private projectService: ImageloaderService) { }
   

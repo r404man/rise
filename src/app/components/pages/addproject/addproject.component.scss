@@ -73,3 +73,32 @@ form {
     margin-top: 50px;
     justify-content: flex-end;
 }
+
+@media screen and(max-width:600px) {
+    .form-group {
+        flex-direction: column;
+        input,
+        label,
+        textarea, .file-info {
+            width: unset !important;
+            font-size: 18px !important;
+        }
+    }
+    form {
+        padding: 0px 10px;
+        label {
+            margin-bottom: 5px;
+        }
+    }
+    .board {
+        .board-title {
+            padding: 10px 10px 0px 10px;
+            font-size: 19px;
+        }
+        padding: 0;
+        margin: 0px 10px 10px 10px;
+    }
+    .buttons {
+        margin-top: 25px;
+    }
+}

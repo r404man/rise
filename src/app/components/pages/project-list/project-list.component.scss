@@ -75,3 +75,45 @@ tr > td {
         height: 1px;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .projects {
+        padding: 0px 10px;
+    }
+    .board {
+        margin: 0px 10px 10px 10px;
+        padding: 0;
+        .board-title {
+            margin-bottom: 20px;
+            padding: 10px 10px 0px 10px;
+        }
+        .projects {
+            .project-table {
+                padding: 0px 10px 10px 0px;
+                overflow-x: auto;
+                margin-bottom: 30px;
+            }
+        }
+    }
+    .rc {
+        width: 20px !important;
+    }
+    tr > th {
+        font-size: 15px;
+        width: 150px;
+    }
+    tr > td {
+        font-size: 16px !important;
+    }
+    table {
+        table-layout: fixed;
+    }
+    .project-link {
+        font-size: 15px;
+    }
+    .back {
+        display: flex;
+        padding: 0px 10px 15px 10px;
+        justify-content: flex-end;
+    }
+}

@@ -1,23 +1,6 @@
-<!-- <a *ngIf='Item != null; else loader' routerLink="project/{{Item.id}}" class="card-link">
-    <div class="card">
-        <div class="card-img">
-            <img src="{{Item.url}}" alt="Card image">
-            <div class="shadow"></div>
-        </div>
-        <div class="card-text">
-            <div class="card-title">
-                {{Item.title}}
-            </div>
-            <div class="card-subtitle">
-                {{Item.date}}
-            </div>
-        </div>
-    </div>
-</a> -->
-
-<a *ngIf='Item != null' routerLink="project/{{Item.id}}" class="card">
+<a *ngIf='Item != null; else loader' routerLink="project/{{Item.id}}" class="card">
     <div class="card__inner">
-        <div class="card-image">
+        <div class="card-image" *ngIf='Item.url != null; else loader'>
             <img src="{{Item.url}}" alt="">
         </div>
         <div class="card-text">
