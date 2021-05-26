@@ -10,23 +10,27 @@ import { Location } from '@angular/common'
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-  messages: any = null;
+  messages: Message[] = null;
 
   constructor(private messageService: MessageService, private router: Router, private location: Location) { }
 
   getMessages() {
     this.messageService.getMessages().subscribe(
       data => {
-        this.messages = data.map(val => {
-          let messageInfo = val.payload.doc.data() as Message;
-          let messageItem: Message = { id: val.payload.doc.id, ...messageInfo }
-          return messageItem;
-        })
+        if (data.length === 0) {
+          this.messages = null;
+        } else {
+          this.messages = data.map(val => {
+            let messageInfo = val.payload.doc.data() as Message;
+            let messageItem: Message = { id: val.payload.doc.id, ...messageInfo }
+            return messageItem;
+          })
+        }
       },
     )
   }
 
-  deleteMessage(id:string) {
+  deleteMessage(id: string) {
     this.messageService.deleteMessage(id);
   }
 

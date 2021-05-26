@@ -3,7 +3,7 @@
         Заявки
     </div>
     <div class="message-table">
-        <table *ngIf='messages != null; else load'>
+        <table *ngIf='messages != null; else allert'>
             <tr>
                 <th class="name">Имя</th>
                 <th class="f mail">Почта</th>
@@ -13,7 +13,7 @@
                 <th class="controls"></th>
             </tr>
             <tr *ngFor="let msg of messages">
-                <td>{{msg.username}}</td>
+                <td>{{msg.name}}</td>
                 <td class="f">{{msg.mail}}</td>
                 <td class="f d">{{msg.date}}</td>
                 <td class="m">{{msg.theme}}</td>
@@ -27,11 +27,11 @@
     </div>
     <ng-template #load>
         <div class="loader">
-            <app-loader></app-loader>
+            <app-loader-circle></app-loader-circle>
         </div>
     </ng-template>
 
-    <ng-template *ngIf='messages === null' class="allert">
-        Сообщений не найдено
+    <ng-template #allert class="allert">
+        Сообщений не найдено!
     </ng-template>
 </div>

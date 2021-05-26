@@ -32,7 +32,7 @@ import { MessagesComponent } from './components/pages/messages/messages.componen
 import { AdminMainComponent } from './components/pages/admin-main/admin-main.component';
 import { ProjectListComponent } from './components/pages/project-list/project-list.component';
 import { MessageDetailComponent } from './components/pages/message-detail/message-detail.component';
-import { LoaderComponent } from './components/parts/loader/loader.component';
+// import { LoaderComponent } from './components/parts/app-loader/app-loader.component';
 import { GobackComponent } from './components/parts/goback/goback.component';
 import { ProjectEditComponent } from './components/pages/project-edit/project-edit.component';
 
@@ -56,7 +56,7 @@ import { ProjectEditComponent } from './components/pages/project-edit/project-ed
     AdminMainComponent,
     ProjectListComponent,
     MessageDetailComponent,
-    LoaderComponent,
+    // LoaderComponent,
     GobackComponent,
     ProjectEditComponent,
     // AdminComponent,

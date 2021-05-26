@@ -19,7 +19,7 @@
                         <a class="project-link delete" (click)="deleteProject(project.id)">Удалить</a>
                     </td>
                     <td>
-                        <a class="project-link" [routerLink]="['/admin/main-page/project-list', project.id]">Открыть</a>
+                        <a class="project-link" [routerLink]="['/admin/main-page/project-list', project.id]">Редактировать</a>
                     </td>
                 </tr>
             </table>
@@ -32,6 +32,6 @@
 
 <ng-template #loader>
     <div class="loader">
-        <app-loader></app-loader>
+        <app-loader-circle></app-loader-circle>
     </div>
 </ng-template>

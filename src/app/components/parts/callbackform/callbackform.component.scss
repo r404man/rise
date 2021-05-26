@@ -73,6 +73,10 @@ $accent: #e5cb96;
     }
 }
 
+.isErr {
+    color: rgb(235, 62, 62) !important;
+}
+
 @media screen and (max-width: 600px) {
     .callback {
         padding: 15px 20px 10px 20px;
@@ -96,5 +100,8 @@ $accent: #e5cb96;
     }
     .callback-title {
         margin-bottom: 10px !important;
+    }
+    .callback-allert {
+        font-size: 18px !important;
     }
 }

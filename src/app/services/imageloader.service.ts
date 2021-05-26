@@ -92,7 +92,7 @@ export class ImageloaderService {
   }
 
   editData(id: string, data) {
-    console.log(data);
+    // console.log(data);
     return this.fireStore.collection('projects').doc(id).set(data);
   }
 
