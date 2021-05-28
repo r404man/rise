@@ -1,7 +1,7 @@
 <a *ngIf='Item != null; else loader' routerLink="project/{{Item.id}}" class="card">
     <div class="card__inner">
         <div class="card-image" *ngIf='Item.url != null; else loader'>
-            <img src="{{Item.url}}" alt="">
+            <img src="{{Item.url}}" alt="Card item image" width="700" height="600">
         </div>
         <div class="card-text">
             <div class="card-title">
@@ -18,6 +18,6 @@
 
 <ng-template #loader>
     <div class="loader">
-        <app-loader-circle></app-loader-circle>
+        <!-- <app-loader-circle></app-loader-circle> -->
     </div>
 </ng-template>

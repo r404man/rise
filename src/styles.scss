@@ -7,30 +7,35 @@
     font-family: "Raleway";
     src: url("./assets/fonts/Raleway-Regular.woff");
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Raleway";
     src: url("./assets/fonts/Raleway-Bold.woff");
     font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Roboto";
     src: url("./assets/fonts/Roboto-Regular.woff");
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Roboto";
     src: url("./assets/fonts/Roboto-Bold.woff");
     font-weight: 700;
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Roboto";
     src: url("./assets/fonts/Roboto-Thin.woff");
     font-weight: 300;
+    font-display: swap;
 }
 
 .container {
@@ -237,7 +242,6 @@ body {
     .board {
         margin: 0px 10px;
         padding: 0px 10px;
-        
     }
     .ng-image-slider {
         height: 300px !important;
@@ -253,7 +257,8 @@ body {
             margin-right: 0 !important;
         }
     }
-    .next-icon, .prev-icon {
+    .next-icon,
+    .prev-icon {
         width: 25px !important;
         height: 25px !important;
         font-size: 28px !important;

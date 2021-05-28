@@ -51,7 +51,7 @@ export class ImageloaderService {
   }
 
   getProjectThumb(id: string) {
-    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/projectThumb`).getDownloadURL()
+    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/projectThumb`).getDownloadURL();
   }
 
 
@@ -64,6 +64,7 @@ export class ImageloaderService {
   }
 
   deleteProject(id: string) {
+    // Delete all images from project directory
     this.getImages(id).subscribe(
       data => {
         data.items.map(
@@ -73,6 +74,8 @@ export class ImageloaderService {
         )
       }
     );
+
+
     this.fireStore.collection('projects').doc(id).delete();
   }
 
@@ -80,10 +83,10 @@ export class ImageloaderService {
     return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/projectThumb`).delete();
   }
 
-  setThumb(id: string, filePath) {
+  setThumb(id: string, file:File) {
     const thumbPath = `${id}/projectThumb`
     this.ref = this.fireStorage.ref(thumbPath);
-    this.task = this.ref.put(filePath);
+    this.task = this.ref.put(file);
     return this.task.percentageChanges();
   }
 

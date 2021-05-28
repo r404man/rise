@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from 'src/app/services/projects';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,16 +9,13 @@ import { ProjectService } from 'src/app/services/projects';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(public router: Router,private projectService: ProjectService) {}
+  constructor(public router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    if(this.projectService.isAuth) {
-
+    if (this.authService.isAuth) {
     } else {
-      // alert('access denied');
-      this.router.navigateByUrl('/admin/auth');      
+      this.router.navigateByUrl('/admin/auth');
     }
-    console.log('/admin')
   }
 
 }

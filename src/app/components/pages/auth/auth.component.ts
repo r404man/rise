@@ -1,25 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProjectService } from 'src/app/services/projects';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/interfaces/user';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
-  public username: string;
-  public password: string;
-  public errMsg: string;
 
-  constructor(public router: Router, private projectService: ProjectService) { }
+export class AuthComponent implements OnInit {
+  public errMsg: string;
+  private rootUser: User = null;
+
+  constructor(public router: Router, private authService: AuthService) { }
 
   auth(form: NgForm) {
-    let { username, password } = form.value;
+    let formUser: User = form.value;
     if (form.valid) {
-      this.projectService.auth(username, password);
-      if (this.projectService.isAuth) {
+      if (formUser.username === this.rootUser.username && formUser.password === this.rootUser.password) {
+        this.authService.getAccess(this.rootUser.success);
         this.router.navigateByUrl('/admin/main-page/project');
       } else {
         this.errMsg = 'Неверный логин или пароль';
@@ -29,9 +31,16 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  getRoot() {
+    this.authService.getAuth().subscribe(
+      data => {
+        this.rootUser = data.data() as User;
+      }
+    )
+  }
 
   ngOnInit(): void {
-
+    this.getRoot();
   }
 
 }

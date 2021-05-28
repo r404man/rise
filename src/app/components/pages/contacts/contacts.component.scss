@@ -13,7 +13,7 @@
     .contacts-info {
         margin-bottom: 30px;
 
-        li {
+        div {
             margin-bottom: 10px;
             list-style-type: none;
             font-size: 22px;
@@ -46,10 +46,9 @@
         margin-bottom: 10px !important;
     }
     .contacts-info {
-        li {
+        div {
             font-size: 18px !important;
         }
         margin-bottom: 15px !important;
     }
-   
 }
