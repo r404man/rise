@@ -123,3 +123,22 @@
         }
     }
 }
+
+@media (min-width: 900px) and (max-width: 1440px) {
+    .card__inner {
+        .card-image {
+            height: 340px;
+        }
+
+        .card-text {
+            top: 60%;
+            padding: 0 25px;
+            .card-title {
+                font-size: 32px;
+            }
+            &::before {
+                display: none;
+            }
+        }
+    }
+}
