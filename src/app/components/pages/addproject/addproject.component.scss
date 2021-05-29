@@ -4,6 +4,10 @@
 
 $accent: #e5cb96;
 
+.file-icon {
+    display: flex;
+}
+
 .board-title {
     margin-bottom: 20px;
 }
@@ -26,7 +30,7 @@ form {
             font-family: Raleway, sans-serif;
             outline: none;
             width: 50%;
-            border-radius: 50px;
+            border-radius: 20px !important;
             border: 1px solid #c4c4c4;
             color: #c4c4c4;
             font-size: 22px;
@@ -79,7 +83,8 @@ form {
         flex-direction: column;
         input,
         label,
-        textarea, .file-info {
+        textarea,
+        .file-info {
             width: unset !important;
             font-size: 18px !important;
         }
@@ -97,6 +102,35 @@ form {
         }
         padding: 0;
         margin: 0px 10px 10px 10px;
+    }
+    .buttons {
+        margin-top: 25px;
+    }
+}
+@media (min-width: 600px) and(max-width:900px) {
+    .form-group {
+        flex-direction: column;
+        input,
+        label,
+        textarea,
+        .file-info {
+            width: unset !important;
+            font-size: 18px !important;
+        }
+    }
+    form {
+        padding: 0px 10px;
+        label {
+            margin-bottom: 5px;
+        }
+    }
+    .board {
+        margin: 0px 15px;
+        .board-title {
+            padding: 10px 10px 0px 10px;
+            font-size: 26px;
+        }
+        padding: 0;
     }
     .buttons {
         margin-top: 25px;

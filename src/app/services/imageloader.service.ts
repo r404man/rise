@@ -14,8 +14,6 @@ export class ImageloaderService {
   task: AngularFireUploadTask;
   percent: Observable<number>;
 
-  storageUrl: string = 'gs://leafy-racer-310911.appspot.com/';
-
   projectsArr: Observable<Project[]>;
 
   constructor(private fireStorage: AngularFireStorage, private fireStore: AngularFirestore) { };
@@ -75,7 +73,6 @@ export class ImageloaderService {
       }
     );
 
-
     this.fireStore.collection('projects').doc(id).delete();
   }
 
@@ -95,13 +92,11 @@ export class ImageloaderService {
   }
 
   editData(id: string, data) {
-    // console.log(data);
     return this.fireStore.collection('projects').doc(id).set(data);
   }
 
   editImages(imgFiles, id) {
     const album = Object.values(imgFiles);
-    console.log(album);
     const albumPath = `${id}/`;
 
     for (let i = 0; i < album.length; i++) {

@@ -86,3 +86,39 @@
         font-size: 21px !important;
     }
 }
+
+@media (min-width: 600px) and(max-width:900px) {
+    .bios {
+        padding: 25px 15px;
+        display: flex;
+
+        .bio-text {
+            width: 50%;
+            margin-left: 4rem;
+            .bio__name {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+            .bio__title {
+                margin-bottom: 10px;
+                font-size: 30px;
+            }
+            .bio__info {
+                margin: 5px 0px 15px 0px;
+            }
+            .bio__q {
+                margin-bottom: 35px;
+            }
+        }
+        .bio-image {
+            display: flex;
+            width: 36%;
+            img {
+                border-radius: 6px;
+                width: 100%;
+                object-fit: cover;
+                height: auto;
+            }
+        }
+    }
+}

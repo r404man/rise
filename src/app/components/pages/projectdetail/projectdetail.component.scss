@@ -41,3 +41,21 @@
     }
     
 }
+
+@media (min-width:600px) and (max-width:900px) {
+    .project {
+        margin: 15px 0px;
+        & > * {
+            padding: 0px 15px;
+        }
+        .project-title {
+            font-size: 36px;
+        }
+        .project-subtitle {
+            font-size: 24px;
+        }
+    }
+    .project-description {
+        padding: 15px 15px;
+    }
+}

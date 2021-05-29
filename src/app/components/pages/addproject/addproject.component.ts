@@ -14,13 +14,18 @@ export class AddprojectComponent implements OnInit {
   project: Object;
   projectLoader: number;
 
+  projectThumbName: string = null;
+  projectFilesCounter: number = null;
+
   constructor(public imageService: ImageloaderService) { }
 
   uploadThumb(event) {
+    this.projectThumbName = event.target.files[0].name;
     this.projectThumb = event.target.files[0];
   }
 
   upload(event) {
+    this.projectFilesCounter = event.target.files.length;
     this.projectImageList = event.target.files;
   }
 

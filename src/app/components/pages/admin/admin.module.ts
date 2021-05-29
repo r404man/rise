@@ -25,8 +25,6 @@ const routing = RouterModule.forChild([
       { path: 'project', component: AddprojectComponent },
     ]
   },
-  // { path: 'messages', component: MessagesComponent },
-  // { path: 'project-list', component: ProjectListComponent },
   { path: '**', redirectTo: 'auth' }
 ])
 

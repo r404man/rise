@@ -7,7 +7,7 @@ import { User } from '../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuth: boolean = false;
+  isAuth: boolean = true;
 
   constructor(private firestore: AngularFirestore) { }
 

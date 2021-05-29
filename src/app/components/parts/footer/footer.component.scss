@@ -72,3 +72,9 @@ footer {
         justify-content: space-between;
     }
 }
+
+@media (min-width:600px) and (max-width:900px) {
+    .footer__inner {
+        padding: 5px 15px;
+    }
+}

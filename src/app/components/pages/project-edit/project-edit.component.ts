@@ -21,6 +21,9 @@ export class ProjectEditComponent implements OnInit {
   imgArr = [];
   id: string;
 
+  thumbFileName:string = null;
+  fileCounter:number = null;
+
   constructor(private projectService: ImageloaderService,
     private route: ActivatedRoute,
     private location: Location) { }
@@ -50,6 +53,7 @@ export class ProjectEditComponent implements OnInit {
 
   editThumb(event) {
     const thumb = event.target.files[0];
+    this.thumbFileName = thumb.name;
     this.projectService.deleteThumb(this.id);
     this.projectService.setThumb(this.id, thumb).subscribe(
       data => {
@@ -87,9 +91,8 @@ export class ProjectEditComponent implements OnInit {
 
 
   editImages(event) {
-    // console.log(event.target.files)
     const imgFiles = event.target.files;
-    console.log(imgFiles);
+    this.fileCounter = imgFiles.length;
     this.projectService.editImages(imgFiles, this.id).subscribe(
       data => {
         // console.log(data);

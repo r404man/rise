@@ -118,3 +118,18 @@ tr > td {
         justify-content: flex-end;
     }
 }
+
+@media (min-width:600px) and (max-width:900px) {
+    .board {
+        margin: 0px 15px;
+        .board-title {
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+    }
+    table {
+        tr > td {
+            padding: 40px 0px !important;
+        }
+    }
+}

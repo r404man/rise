@@ -2,7 +2,7 @@
     <div class="board-title title">
         Редактирование проекта
     </div>
-    <div class="edit" *ngIf="project != null; else load">
+    <div class="edit" *ngIf="project != null">
         <div class="edit-form">
             <div class="allert-group" *ngIf='isSuccess != null'>
                 <div class="allert">
@@ -43,8 +43,8 @@
                                 d="M20 30C19.31 30 18.75 29.44 18.75 28.75V11.25C18.75 10.56 19.31 10 20 10C20.69 10 21.25 10.56 21.25 11.25V28.75C21.25 29.44 20.69 30 20 30Z"
                                 fill="#C4C4C4" />
                         </svg>
-                        <div class="file-info">
-                            Выберите файл для обложки
+                        <div class="file-info" *ngIf='thumbFileName != null; else takeFile'>
+                            {{thumbFileName}}
                         </div>
                     </label>
                     <input type="file" id="thumb" class="form__input project-file thumb-file" aria-placeholder="select"
@@ -85,8 +85,8 @@
                                     d="M20 30C19.31 30 18.75 29.44 18.75 28.75V11.25C18.75 10.56 19.31 10 20 10C20.69 10 21.25 10.56 21.25 11.25V28.75C21.25 29.44 20.69 30 20 30Z"
                                     fill="#C4C4C4" />
                             </svg>
-                            <div class="file-info">
-                                Выберите файлы для галереи
+                            <div class="file-info" *ngIf='fileCounter != null; else takeFile'>
+                                {{fileCounter}}
                             </div>
                         </label>
                         <input type="file" class="form__input project-file thumb-file" multiple
@@ -102,8 +102,8 @@
     </div>
 </div>
 
-<ng-template #load>
-    <div class="loader">
-        <!-- <app-loader-circle></app-loader-circle> -->
+<ng-template #takeFile>
+    <div class="file-info">
+        Выбeрите файл
     </div>
 </ng-template>

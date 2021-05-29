@@ -126,3 +126,43 @@
         }
     }
 }
+
+@media (min-width: 600px) and(max-width:900px) {
+    .admin-pannel {
+        margin: 20px 15px 20px 15px;
+        .admin-photo,
+        .admin-info {
+            display: none;
+        }
+        .admin-nav {
+            nav {
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                border-radius: 6px;
+                .nav-media-title {
+                    display: flex;
+                    padding: 10px 10px;
+                    font-size: 21px;
+                    font-weight: 700;
+                }
+                a {
+                    &:first-child {
+                        text-align: center;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 21px;
+                    width: 33.333%;
+                    height: 37px;
+                    padding: 7px 10px;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
