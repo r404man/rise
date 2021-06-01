@@ -2,14 +2,14 @@
     <div class="board-title title">
         Редактирование проекта
     </div>
-    <div class="edit" *ngIf="project != null">
+    <div class="edit" *ngIf="project$ | async as project">
         <div class="edit-form">
             <div class="allert-group" *ngIf='isSuccess != null'>
                 <div class="allert">
                     Изменения успешно сохранены
                 </div>
             </div>
-            <form #editForm="ngForm" (ngSubmit)="editData(editForm)">
+            <form #editForm="ngForm" (ngSubmit)="saveData(editForm)">
                 <div class="form__group">
                     <label class="form__label" for="">Название проекта</label>
                     <input class="form__input" type="text" name="title" [(ngModel)]="project.title">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form__group thumb-img">
                     <label for="" class="form__label">Обложка</label>
-                    <div class="project-thumb">
+                    <div class="project-thumb" *ngIf='projectThumb$ | async as projectThumb'>
                         <img src="{{projectThumb}}" alt="Обложка проекта">
                     </div>
                 </div>
@@ -52,6 +52,10 @@
                 </div>
                 <div class="form__group images">
                     <label class="form__label" for="">Изображения</label>
+                    <div id="loader">
+                        <progress id='p' value='{{progressBar}}' max='100'></progress>
+                        <output for='p'>{{progressBar}}</output>
+                    </div>
                     <div class="img-list">
                         <a *ngFor='let img of imgArr' class="project-img" (click)='deleteImage(img)'>
                             <img src="{{img.url}}" alt="Изображения проекта">
@@ -72,7 +76,7 @@
                         </a>
                     </div>
                     <div class="form__group img-edit">
-                        <label for="thumb" class="thumb">
+                        <label for="album" class="thumb">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -89,7 +93,7 @@
                                 {{fileCounter}}
                             </div>
                         </label>
-                        <input type="file" class="form__input project-file thumb-file" multiple
+                        <input type="file" id="album" required multiple class="form__input project-file thumb-file"
                             (change)="editImages($event)">
                     </div>
                 </div>

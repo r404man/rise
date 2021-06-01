@@ -1,5 +1,7 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Project } from 'src/app/interfaces/project';
 import { ImageloaderService } from 'src/app/services/imageloader.service';
 
 @Component({
@@ -8,17 +10,17 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() Item = null;
-  // thumbUrl: Observable<string>;
+  @Input() Item: Project = null;
+  projectImgUrl$: Observable<string>;
 
   constructor(private projectService: ImageloaderService) { }
-  
+
   getThumb() {
-    this.projectService.getProjectThumb(this.Item.id).subscribe(
-      data => {
-        this.Item.url = data;
-      }
-    )
+    this.projectImgUrl$ = this.projectService.getProjectThumb(this.Item.id).pipe(
+      map((imgUrl) => {
+        return imgUrl;
+      })
+    );
   }
 
   ngOnInit(): void {

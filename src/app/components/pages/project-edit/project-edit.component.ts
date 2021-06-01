@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Img } from 'src/app/interfaces/image';
 import { Project } from 'src/app/interfaces/project';
 import { ImageloaderService } from 'src/app/services/imageloader.service';
 
@@ -11,45 +13,60 @@ import { ImageloaderService } from 'src/app/services/imageloader.service';
   templateUrl: './project-edit.component.html',
   styleUrls: ['./project-edit.component.scss']
 })
-export class ProjectEditComponent implements OnInit {
-  isDelete:boolean = null;
-  isSuccess: boolean = null;
-  persentage: number;
-  
-  project: Project = null;
-  projectThumb;
-  imgArr = [];
-  id: string;
 
-  thumbFileName:string = null;
-  fileCounter:number = null;
+
+export class ProjectEditComponent implements OnInit {
 
   constructor(private projectService: ImageloaderService,
     private route: ActivatedRoute,
-    private location: Location) { }
+    private location: Location) {
+    this.route.params.subscribe(params => this.id = params.projectId);
+  }
+
+  isDelete: boolean = null;
+  isSuccess: boolean = null;
+  persentage: number;
+
+  // project: Project = null;
+
+  project$: Observable<Project> = null;
+  projectThumb$: Observable<Img>;
+
+  // projectThumb;
+  imgArr: Img[] = [];
+
+  // Project Id
+  id: string;
+
+  // Input type='file' client views
+  thumbFileName: string = null;
+  fileCounter: number = null;
+
+  progressBar:number = null;
 
   getProject() {
-    this.projectService.getProjectDetail(this.id).subscribe(
-      data => {
-        this.project = data.data() as Project;
-      }
+    // Project collection
+    this.project$ = this.projectService.getProjectDetail(this.id).pipe(
+      tap(() => {
+        this.getProjectThumb();
+      }),
+      map((projectItem) => {
+        return {
+          id: projectItem.id,
+          ...projectItem.data()
+        } as Project
+      })
     );
-    this.projectService.getProjectThumb(this.id).subscribe(
-      data => {
-        this.projectThumb = data;
-      }
-    )
   }
 
-  editData(form: NgForm) {
-    this.projectService.editData(this.id, { ...form.value }).then(
-    ).finally(
-      () => {
-        this.isSuccess = true;
-        this.location.back();
-      }
+  getProjectThumb() {
+    this.projectThumb$ = this.projectService.getProjectThumb(this.id).pipe(
+      map((projectThumb) => {
+        return projectThumb;
+      })
     );
   }
+
 
   editThumb(event) {
     const thumb = event.target.files[0];
@@ -59,11 +76,7 @@ export class ProjectEditComponent implements OnInit {
       data => {
         this.persentage = data;
         if (data === 100) {
-          this.projectService.getProjectThumb(this.id).subscribe(
-            data => {
-              this.projectThumb = data;
-            }
-          )
+          this.projectThumb$ = this.projectService.getProjectThumb(this.id);
         }
       }
     );
@@ -74,19 +87,20 @@ export class ProjectEditComponent implements OnInit {
       data => {
         data.items.map(val => {
           val.getDownloadURL().then(
-            imgPath => this.imgArr.push({ url: imgPath, imgName: val.name })
+            imgPath => this.imgArr.push({ url: imgPath, name: val.name })
           )
         })
       }
     )
   }
 
-  deleteImage(img) {
-    this.projectService.deleteImage(this.id, img.imgName).subscribe(
-      data => {
-        this.isDelete = true;
+  deleteImage(img: Img) {
+    for (let i = 0; i < this.imgArr.length; i++) {
+      if (img.name === this.imgArr[i].name) {
+        this.imgArr.splice(i, 1);
       }
-    );
+    }
+    this.projectService.deleteImage(this.id, img.name);
   }
 
 
@@ -95,13 +109,28 @@ export class ProjectEditComponent implements OnInit {
     this.fileCounter = imgFiles.length;
     this.projectService.editImages(imgFiles, this.id).subscribe(
       data => {
-        // console.log(data);
+        console.log(data);
+        this.progressBar = data;
+        if(this.progressBar === 100) {
+              
+        }
       }
     );
   }
 
+  saveData(form: NgForm) {
+    this.projectService.editData(this.id, { ...form.value }).then(
+    ).finally(
+      () => {
+        this.isSuccess = true;
+        this.location.back();
+      }
+    );
+  }
+
+
+
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('projectId');
     this.getProject();
     this.getImages();
   }

@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message-detail',
@@ -11,15 +13,19 @@ import { Location } from '@angular/common';
 })
 export class MessageDetailComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private messageService: MessageService, private route: ActivatedRoute, private location: Location) {
+    this.route.params.subscribe(params => this.messageId = params.messageId);
+  }
 
-  message: any = null;
+  message$: Observable<Message> = null;
+  messageId: string = null;
 
   getMessage() {
-    const id: string = this.route.snapshot.paramMap.get('messageId');
-    this.messageService.getMsgDetail(id).subscribe(res => {
-      this.message = res;
-    })
+    this.message$ = this.messageService.getMsgDetail(this.messageId).pipe(
+      map((messageItem) => {
+        return { ...messageItem } as Message;
+      })
+    );
   }
 
   goBack() {
@@ -29,5 +35,4 @@ export class MessageDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getMessage()
   }
-
 }

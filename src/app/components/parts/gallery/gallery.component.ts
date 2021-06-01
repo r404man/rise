@@ -7,7 +7,7 @@ import { NgImageSliderComponent } from 'ng-image-slider'
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnDestroy {
+export class GalleryComponent implements OnDestroy, OnInit {
   @Input() id: string;
   @ViewChild('gallery') slider:NgImageSliderComponent;
   imgArr = []

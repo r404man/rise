@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Message } from '../interfaces/message';
 
 @Injectable({
@@ -10,6 +11,8 @@ export class MessageService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  dbCollection = this.firestore.collection<Message>('messages');
+
   addMsg(msg: Message) {
     let isValid: boolean = true;
     for (var prop in msg) {
@@ -19,19 +22,19 @@ export class MessageService {
       }
     }
     if (isValid) {
-      return this.firestore.collection('messages').add(msg);
+      return this.dbCollection.add(msg);
     }
   }
 
   getMessages() {
-    return this.firestore.collection('messages').snapshotChanges();
+    return this.dbCollection.snapshotChanges();
   }
 
-  getMsgDetail(id:string) {
-    return this.firestore.collection('messages').doc(id).valueChanges()
+  getMsgDetail(id: string) {
+    return this.dbCollection.doc(id).valueChanges();
   }
 
-  deleteMessage(id:string) {
-    return this.firestore.collection('messages').doc(id).delete();
+  deleteMessage(id: string) {
+    return this.dbCollection.doc(id).delete();
   }
 }

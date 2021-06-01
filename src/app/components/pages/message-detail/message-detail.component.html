@@ -1,4 +1,4 @@
-<div class="board" *ngIf="message != null">
+<div class="board" *ngIf="message$ | async as message">
     <div class="board-title title">Заявки</div>
     <div class="message">
         <div class="message-details">

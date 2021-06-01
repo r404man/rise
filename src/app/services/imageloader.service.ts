@@ -10,13 +10,17 @@ import { Project } from '../interfaces/project';
 })
 
 export class ImageloaderService {
+  
+  constructor(private fireStorage: AngularFireStorage, private fireStore: AngularFirestore) { };
+
+  dbDocCollection = this.fireStore.collection<Project>('projects'); 
+
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
   percent: Observable<number>;
 
   projectsArr: Observable<Project[]>;
 
-  constructor(private fireStorage: AngularFireStorage, private fireStore: AngularFirestore) { };
 
   upload(project) {
     // Image array from FileList Object
@@ -45,7 +49,11 @@ export class ImageloaderService {
 
   // Data for project-list 
   getProjects() {
-    return this.fireStore.collection('projects').snapshotChanges();
+    return this.dbDocCollection.snapshotChanges();
+  }
+
+  getProjectDetail(id: string) {
+    return this.dbDocCollection.doc(id).get();
   }
 
   getProjectThumb(id: string) {
@@ -53,9 +61,6 @@ export class ImageloaderService {
   }
 
 
-  getProjectDetail(id: string) {
-    return this.fireStore.collection('projects').doc(id).get();
-  }
 
   getImages(id: string) {
     return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/`).listAll();
@@ -73,14 +78,14 @@ export class ImageloaderService {
       }
     );
 
-    this.fireStore.collection('projects').doc(id).delete();
+    this.dbDocCollection.doc(id).delete();
   }
 
   deleteThumb(id: string) {
     return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/projectThumb`).delete();
   }
 
-  setThumb(id: string, file:File) {
+  setThumb(id: string, file: File) {
     const thumbPath = `${id}/projectThumb`
     this.ref = this.fireStorage.ref(thumbPath);
     this.task = this.ref.put(file);
@@ -88,7 +93,7 @@ export class ImageloaderService {
   }
 
   deleteImage(id: string, imgName: string) {
-    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/${imgName}`).delete();
+    return this.fireStorage.refFromURL(`gs://leafy-racer-310911.appspot.com/${id}/${imgName}`).delete().toPromise();
   }
 
   editData(id: string, data) {

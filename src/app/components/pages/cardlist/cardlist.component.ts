@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Project } from 'src/app/interfaces/project';
 import { ImageloaderService } from '../../../services/imageloader.service';
 
@@ -8,27 +10,23 @@ import { ImageloaderService } from '../../../services/imageloader.service';
   styleUrls: ['./cardlist.component.scss']
 })
 export class CardlistComponent implements OnInit {
-  projects: Project[] = null;
-  projectCounter:boolean = false;
+  projects$: Observable<Project[]>;
 
   constructor(public projectService: ImageloaderService) { }
 
-
   getProjects() {
-    this.projectService.getProjects().subscribe(
-      data => {
-        this.projects = data.map(val => {
-          return {
-            id: val.payload.doc.id,
-            ...val.payload.doc.data() as Object
-          } as Project;
-        })
-
-        if(this.projects.length <= 2) {
-          this.projectCounter = true;
-        } 
-      },
-    );
+    this.projects$ = this.projectService.getProjects().pipe(
+      map((projectArr) => {
+        return projectArr.map(
+          projectItem => {
+            return {
+              id: projectItem.payload.doc.id,
+              ...projectItem.payload.doc.data()
+            } as Project
+          }
+        )
+      })
+    )
   }
 
   ngOnInit(): void {
